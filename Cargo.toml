@@ -1,0 +1,21 @@
+[package]
+name = "kiss"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+curve25519-dalek = { version = "5", features = ["serde"] }
+sha2 = "0.10"
+chacha20poly1305 = "*"
+serde = { version = "1", features = ["derive"] }
+serde_json = { version = "1", features = ["raw_value"] }
+base64 = "0.23.1"
+zeroize = { version = "1", features = ["derive"] }
+mutants = "0.0.4"
+
+[profile.release]
+opt-level = "s"
+lto = true
+codegen-units = 1
+panic = "abort"
+strip = true
